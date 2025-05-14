@@ -15,6 +15,7 @@ const EditProfile = ({ user }) => {
   const [photoUrl, setPhotoUrl] = useState(user.photoUrl);
   const [about, setAbout] = useState(user.about);
   const [error, setError] = useState(null);
+  const [isSaved, setIsSaved] = useState(false);
 
   const handleSaveProfile = async () => {
     try {
@@ -35,6 +36,10 @@ const EditProfile = ({ user }) => {
         }
       );
       dispatch(setUser(response?.data?.user));
+      setIsSaved(true);
+      setTimeout(() => {
+        setIsSaved(false);
+      }, 1000);
     } catch (err) {
       console.log(err);
       setError(err?.response?.data || 'Profile update failed');
@@ -113,7 +118,18 @@ const EditProfile = ({ user }) => {
           </button>
         </fieldset>
       </div>
-      <UserCard feed={{ firstName, lastName, age, gender, photoUrl, about }} />
+      <div className="h-80 pt-12 pl-10">
+        <UserCard
+          feed={{ firstName, lastName, age, gender, photoUrl, about }}
+        />
+      </div>
+      {isSaved && (
+        <div className="toast toast-top toast-center pt-10">
+          <div className="alert alert-success">
+            <span>Profile Saved successfully!</span>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
