@@ -1,5 +1,4 @@
 const UserCard = ({ feed }) => {
-  console.log(feed);
   const { firstName, lastName, age, gender, skills, photoUrl, about } = feed;
   return (
     <div className="card bg-base-300 w-80 shadow-sm">

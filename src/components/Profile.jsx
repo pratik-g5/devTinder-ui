@@ -1,7 +1,11 @@
-import React from 'react';
+import { useSelector } from 'react-redux';
+import EditProfile from './EditProfile';
+import UserCard from './UserCard';
 
 const Profile = () => {
-  return <div>Profile</div>;
+  const userData = useSelector((store) => store.user);
+
+  return userData && <EditProfile user={userData} />;
 };
 
 export default Profile;
