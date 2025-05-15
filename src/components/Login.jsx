@@ -9,8 +9,8 @@ const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [error, setError] = useState(null);
-  const [email, setEmail] = useState('pratik@gmail.com');
-  const [password, setPassword] = useState('Pratik@12');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
   const handleLogin = async () => {
     try {
