@@ -32,7 +32,7 @@ const body = () => {
   return (
     <div>
       <Navbar />
-      <div className="mb-3">
+      <div className="mb-3 min-h-screen">
         <Outlet />
       </div>
       <Footer />
