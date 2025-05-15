@@ -32,7 +32,9 @@ const body = () => {
   return (
     <div>
       <Navbar />
-      <Outlet />
+      <div className="mb-3">
+        <Outlet />
+      </div>
       <Footer />
     </div>
   );

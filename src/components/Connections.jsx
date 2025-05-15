@@ -34,7 +34,7 @@ const Connections = () => {
             No connections yet!
             <Link
               to="/"
-              className="pl-2 text-blue-300 flex items-center inline-flex"
+              className="pl-2 text-blue-300 items-center inline-flex"
             >
               Explore
               <img
