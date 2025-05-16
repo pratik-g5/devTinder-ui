@@ -2,7 +2,7 @@ import axios from 'axios';
 import { useEffect } from 'react';
 import { BASE_URL } from '../utils/constants';
 import { useDispatch, useSelector } from 'react-redux';
-import { addRequests } from '../redux/requestsSlice';
+import { addRequests, clearRequest } from '../redux/requestsSlice';
 import { Link } from 'react-router-dom';
 
 const Requests = () => {
@@ -24,6 +24,19 @@ const Requests = () => {
   useEffect(() => {
     fetchRequests();
   }, []);
+
+  const reviewRequest = async (status, id) => {
+    try {
+      const response = await axios.post(
+        BASE_URL + '/request/review/' + status + '/' + id,
+        {},
+        { withCredentials: true }
+      );
+      dispatch(clearRequest(id));
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   return (
     <div>
@@ -55,26 +68,42 @@ const Requests = () => {
                 key={request._id}
                 className="flex pt-8 justify-center"
               >
-                <div className="card bg-base-300 w-5/12 shadow-sm h-28 flex flex-row items-center justify-between">
-                  <div className="flex items-center">
+                <div className="card bg-base-300 w-8/12 shadow-sm min-h-48 flex flex-row items-center  p-4">
+                  <div className="flex items-center w-1/5">
                     <img
                       src={photoUrl}
                       alt="Profile"
                       className="w-24 h-24 rounded-full shadow-lg ml-2"
                     />
                   </div>
-                  <div className="-ml-16">
+                  <div className="w-2/3">
                     <h1 className="text-xl font-bolds">
                       {firstName + ' ' + lastName}
                     </h1>
-                    <h2 className="text-md text-neutral-500">
+                    <h2 className="text-md text-neutral-500 1/3">
                       {age + ', ' + gender}{' '}
                     </h2>
-                    <p className="text-sm text-neutral-300 pt-2">{about}</p>
+                    <p className="text-sm text-neutral-300 pt-2 overflow-hidden overflow-ellipsis max-h-16 break-words">
+                      {about}
+                    </p>
                   </div>
-                  <div className="pr-5">
-                    <button className="btn btn-primary mx-3">Reject</button>
-                    <button className="btn btn-secondary">Accept</button>
+                  <div className="pr-5 flex">
+                    <button
+                      className="btn btn-primary mx-3"
+                      onClick={() => {
+                        reviewRequest('rejected', request._id);
+                      }}
+                    >
+                      Reject
+                    </button>
+                    <button
+                      className="btn btn-secondary"
+                      onClick={() => {
+                        reviewRequest('accepted', request._id);
+                      }}
+                    >
+                      Accept
+                    </button>
                   </div>
                 </div>
               </div>
