@@ -6,6 +6,7 @@ import appStore from './redux/appStore.jsx';
 import { Provider } from 'react-redux';
 import Feed from './components/Feed.jsx';
 import Connections from './components/Connections.jsx';
+import Requests from './components/Requests.jsx';
 
 function App() {
   return (
@@ -32,6 +33,10 @@ function App() {
               <Route
                 path="/connections"
                 element={<Connections />}
+              />
+              <Route
+                path="/requests"
+                element={<Requests />}
               />
             </Route>
           </Routes>

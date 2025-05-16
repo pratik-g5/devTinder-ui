@@ -1,6 +1,6 @@
 import axios from 'axios';
-import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { setUser } from '../redux/userSlice';
 import { useNavigate } from 'react-router-dom';
 import { BASE_URL } from '../utils/constants';
@@ -11,6 +11,15 @@ const Login = () => {
   const [error, setError] = useState(null);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [showError, setShowError] = useState(false);
+
+  const userData = useSelector((state) => state.user);
+
+  useEffect(() => {
+    if (userData && userData._id) {
+      navigate('/');
+    }
+  }, [userData]);
 
   const handleLogin = async () => {
     try {
@@ -26,6 +35,7 @@ const Login = () => {
       }
       navigate('/');
     } catch (error) {
+      setShowError(true);
       setError(error?.response?.data || 'Login failed');
     }
   };
@@ -41,6 +51,7 @@ const Login = () => {
           className="input"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+          onClick={(e) => setShowError(false)}
         />
 
         <label className="label">Password</label>
@@ -49,8 +60,9 @@ const Login = () => {
           className="input"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          onClick={(e) => setShowError(false)}
         />
-        {error && <p className="text-red-500 mt-2">{error}</p>}
+        {showError && <p className="text-red-500 mt-2">{error}</p>}
         <button
           className="btn btn-neutral mt-4"
           onClick={() => handleLogin()}

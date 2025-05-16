@@ -1,42 +1,42 @@
 import axios from 'axios';
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { BASE_URL } from '../utils/constants';
 import { useDispatch, useSelector } from 'react-redux';
-import { addConnections } from '../redux/connectionSlice';
+import { addRequests } from '../redux/requestsSlice';
 import { Link } from 'react-router-dom';
 
-const Connections = () => {
+const Requests = () => {
   const dispatch = useDispatch();
-  const connections = useSelector((state) => state.connections);
-  console.log(connections);
-  const fetchConnections = async () => {
+  const requests = useSelector((state) => state.requests);
+
+  const fetchRequests = async () => {
     try {
-      const res = await axios.get(BASE_URL + '/user/connections', {
-        withCredentials: true,
-      });
-      //   console.log(res?.data?.data);
-      dispatch(addConnections(res?.data?.data));
+      const connectionRequests = await axios.get(
+        BASE_URL + '/user/requests/received',
+        { withCredentials: true }
+      );
+      dispatch(addRequests(connectionRequests?.data?.data));
     } catch (err) {
       console.log(err);
     }
   };
 
   useEffect(() => {
-    fetchConnections();
+    fetchRequests();
   }, []);
 
   return (
     <div>
-      <h1 className="text-3xl font-bold text-center pt-8">Connections</h1>
-      {!connections || connections.length === 0 ? (
+      <h1 className="text-3xl font-bold text-center pt-8">Requests</h1>
+      {!requests || requests.length === 0 ? (
         <div className="flex justify-center py-8">
           <p className="text-lg">
-            No connections yet!
+            No requests were received !
             <Link
               to="/"
-              className="pl-2 text-blue-300 items-center inline-flex"
+              className="px-2 items-center inline-flex"
             >
-              Explore
+              Connect?
               <img
                 src="maximize.png"
                 alt="explore"
@@ -47,15 +47,15 @@ const Connections = () => {
         </div>
       ) : (
         <div>
-          {connections.map((connection) => {
+          {requests.map((request) => {
             const { firstName, lastName, about, age, gender, photoUrl } =
-              connection;
+              request.fromUserId;
             return (
               <div
-                key={connection._id}
+                key={request._id}
                 className="flex pt-8 justify-center"
               >
-                <div className="card bg-base-300 w-1/2 shadow-sm h-28 flex flex-row items-center">
+                <div className="card bg-base-300 w-5/12 shadow-sm h-28 flex flex-row items-center justify-between">
                   <div className="flex items-center">
                     <img
                       src={photoUrl}
@@ -63,14 +63,18 @@ const Connections = () => {
                       className="w-24 h-24 rounded-full shadow-lg ml-2"
                     />
                   </div>
-                  <div className="ml-6">
-                    <h1 className="text-xl font-bold">
+                  <div className="-ml-16">
+                    <h1 className="text-xl font-bolds">
                       {firstName + ' ' + lastName}
                     </h1>
                     <h2 className="text-md text-neutral-500">
                       {age + ', ' + gender}{' '}
                     </h2>
                     <p className="text-sm text-neutral-300 pt-2">{about}</p>
+                  </div>
+                  <div className="pr-5">
+                    <button className="btn btn-primary mx-3">Reject</button>
+                    <button className="btn btn-secondary">Accept</button>
                   </div>
                 </div>
               </div>
@@ -82,4 +86,4 @@ const Connections = () => {
   );
 };
 
-export default Connections;
+export default Requests;
