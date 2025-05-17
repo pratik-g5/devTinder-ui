@@ -68,12 +68,12 @@ const Requests = () => {
                 key={request._id}
                 className="flex pt-8 justify-center"
               >
-                <div className="card bg-base-300 w-11/12 md:w-7/12 shadow-sm min-h-48 flex flex-col md:flex-row items-center p-4">
+                <div className="card bg-base-300 w-11/12 md:w-7/12 shadow-sm min-h-32 flex flex-col md:flex-row items-center p-4">
                   <div className="flex items-center w-full md:w-1/5 mb-4 md:mb-0">
                     <img
                       src={photoUrl}
                       alt="Profile"
-                      className="w-24 h-24 rounded-full shadow-lg mx-auto md:ml-2"
+                      className="w-20 h-20 rounded-full shadow-lg mx-auto md:ml-2"
                     />
                   </div>
                   <div className="w-full md:w-2/3 text-center md:text-left">
@@ -83,7 +83,7 @@ const Requests = () => {
                     <h2 className="text-md text-neutral-500">
                       {age + ', ' + gender}
                     </h2>
-                    <p className="text-sm text-neutral-300 pt-2 overflow-hidden overflow-ellipsis max-h-16 break-words">
+                    <p className="text-sm text-neutral-300 pt-2 overflow-hidden overflow-ellipsis max-h-12 break-words">
                       {about}
                     </p>
                   </div>

@@ -26,11 +26,13 @@ const Connections = () => {
   }, []);
 
   return (
-    <div>
-      <h1 className="text-3xl font-bold text-center pt-8">Connections</h1>
+    <div className="px-4">
+      <h1 className="text-2xl md:text-3xl font-bold text-center pt-8">
+        Connections
+      </h1>
       {!connections || connections.length === 0 ? (
         <div className="flex justify-center py-8">
-          <p className="text-lg">
+          <p className="text-base md:text-lg text-center">
             No connections yet!
             <Link
               to="/"
@@ -40,7 +42,7 @@ const Connections = () => {
               <img
                 src="maximize.png"
                 alt="explore"
-                className="w-5 h-5 ml-1 inline-block align-middle"
+                className="w-4 h-4 md:w-5 md:h-5 ml-1 inline-block align-middle"
               />
             </Link>
           </p>
@@ -55,22 +57,24 @@ const Connections = () => {
                 key={connection._id}
                 className="flex pt-8 justify-center"
               >
-                <div className="card bg-base-300 w-1/2 shadow-sm h-28 flex flex-row items-center">
+                <div className="card bg-base-300 w-full md:w-1/2 shadow-sm h-auto md:h-28 flex flex-col md:flex-row items-center p-4 md:p-0">
                   <div className="flex items-center">
                     <img
                       src={photoUrl}
                       alt="Profile"
-                      className="w-24 h-24 rounded-full shadow-lg ml-2"
+                      className="w-20 h-20 md:w-24 md:h-24 rounded-full shadow-lg"
                     />
                   </div>
-                  <div className="ml-6">
-                    <h1 className="text-xl font-bold">
+                  <div className="mt-4 md:mt-0 md:ml-6 text-center md:text-left">
+                    <h1 className="text-lg md:text-xl font-bold">
                       {firstName + ' ' + lastName}
                     </h1>
-                    <h2 className="text-md text-neutral-500">
+                    <h2 className="text-sm md:text-md text-neutral-500">
                       {age + ', ' + gender}{' '}
                     </h2>
-                    <p className="text-sm text-neutral-300 pt-2">{about}</p>
+                    <p className="text-xs md:text-sm text-neutral-300 pt-2">
+                      {about}
+                    </p>
                   </div>
                 </div>
               </div>

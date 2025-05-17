@@ -1,7 +1,7 @@
 const Footer = () => {
   return (
-    <footer className="footer bg-base-300 text-neutral-content p-2 text-sm flex justify-between w-full">
-      <aside className="flex items-center space-x-2">
+    <footer className="footer bg-base-300 text-neutral-content p-4 text-sm flex flex-col md:flex-row justify-between items-center w-full">
+      <aside className="flex items-center space-x-2 mb-2 md:mb-0">
         <svg
           width="16"
           height="16"
@@ -15,7 +15,7 @@ const Footer = () => {
         </svg>
         <p>© {new Date().getFullYear()} - All rights reserved</p>
       </aside>
-      <nav className="flex space-x-2">
+      <nav className="flex space-x-4">
         <a>
           <svg
             xmlns="http://www.w3.org/2000/svg"

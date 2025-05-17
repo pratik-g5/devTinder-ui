@@ -25,25 +25,25 @@ const Navbar = () => {
         <img
           alt="Icon"
           src="/devTinder.jpg"
-          className="ml-4 w-12 h-12 rounded-md"
+          className="ml-4 w-10 h-10 sm:w-12 sm:h-12 rounded-md"
         />
         <Link
           to="/"
-          className="btn btn-ghost text-xl"
+          className="btn btn-ghost text-lg sm:text-xl"
         >
           DevTinder
         </Link>
       </div>
       {userData && (
         <>
-          <p>Welcome, {userData.firstName} !</p>
-          <div className="mx-5 dropdown dropdown-end">
+          <p className="hidden sm:block">Welcome, {userData.firstName} !</p>
+          <div className="mx-2 sm:mx-5 dropdown dropdown-end">
             <div
               tabIndex={0}
               role="button"
               className="btn btn-ghost btn-circle avatar"
             >
-              <div className="w-10 rounded-full">
+              <div className="w-8 sm:w-10 rounded-full">
                 <img
                   alt="Tailwind CSS Navbar component"
                   src={
@@ -56,7 +56,7 @@ const Navbar = () => {
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
+              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-40 sm:w-52 p-2 shadow"
             >
               <li>
                 <Link
