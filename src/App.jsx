@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Body from './components/body.jsx';
+import Body from './components/Body.jsx';
 import Login from './components/Login.jsx';
 import Profile from './components/Profile.jsx';
 import appStore from './redux/appStore';
