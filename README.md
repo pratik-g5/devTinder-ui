@@ -1,4 +1,4 @@
-# DevTinder UI 💘💻
+# DevTinder UI
 
 The frontend user interface for **DevTinder** — a developer matchmaking app inspired by Tinder, focused on connecting developers based on skills, interests, and projects. This React-based interface interacts with the [DevTinder](https://github.com/pratik-g5/devTinder) and provides a smooth, responsive user experience.
 
