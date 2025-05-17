@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import Navbar from './Navbar';
 import { Outlet, useNavigate } from 'react-router-dom';
 import Footer from './Footer';
@@ -21,7 +21,6 @@ const body = () => {
       if (err.status === 401 || err.status === 400) {
         navigate('/login');
       }
-      console.log(err.message);
     }
   };
 

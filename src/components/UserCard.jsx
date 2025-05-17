@@ -15,9 +15,7 @@ const UserCard = ({ feed }) => {
         { withCredentials: true }
       );
       dispatch(removeUserFromFeed(id));
-    } catch (err) {
-      console.log(err);
-    }
+    } catch (err) {}
   };
 
   return (
@@ -31,7 +29,9 @@ const UserCard = ({ feed }) => {
       </figure>
       <div className="card-body">
         <h2 className="card-title">{firstName + ' ' + lastName}</h2>
-        <p className="text-md text-neutral-400">{age + ', ' + gender}</p>
+        {(age || gender) && (
+          <p className="text-md text-neutral-400">{age + ', ' + gender}</p>
+        )}
         <p>{about}</p>
         <div className="card-actions justify-center py-4">
           <button

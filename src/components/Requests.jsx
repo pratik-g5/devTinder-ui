@@ -16,9 +16,7 @@ const Requests = () => {
         { withCredentials: true }
       );
       dispatch(addRequests(connectionRequests?.data?.data));
-    } catch (err) {
-      console.log(err);
-    }
+    } catch (err) {}
   };
 
   useEffect(() => {
@@ -33,9 +31,7 @@ const Requests = () => {
         { withCredentials: true }
       );
       dispatch(clearRequest(id));
-    } catch (err) {
-      console.log(err);
-    }
+    } catch (err) {}
   };
 
   return (

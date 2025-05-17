@@ -19,7 +19,6 @@ const EditProfile = ({ user }) => {
 
   const handleSaveProfile = async () => {
     try {
-      //   console.log(firstName, lastName, age, gender, photoUrl, about);
       setError(null);
       const response = await axios.patch(
         BASE_URL + '/profile/edit',
@@ -41,7 +40,6 @@ const EditProfile = ({ user }) => {
         setIsSaved(false);
       }, 1000);
     } catch (err) {
-      console.log(err);
       setError(err?.response?.data || 'Profile update failed');
     }
   };
