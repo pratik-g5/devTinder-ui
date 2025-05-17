@@ -26,7 +26,9 @@ const body = () => {
   };
 
   useEffect(() => {
-    fetchUser();
+    if (window.location.pathname !== '/login') {
+      fetchUser();
+    }
   }, []);
 
   return (

@@ -17,7 +17,6 @@ const Feed = () => {
       });
       dispatch(addFeed(res.data));
     } catch (err) {
-      navigate('/login');
       console.log(err);
     }
   };
@@ -25,6 +24,14 @@ const Feed = () => {
   useEffect(() => {
     fetchUsers();
   }, []);
+
+  if (!feed || feed.length <= 0) {
+    return (
+      <div className="flex justify-center py-8">
+        <p className="text-lg">No users found !</p>
+      </div>
+    );
+  }
 
   return (
     feed && (
