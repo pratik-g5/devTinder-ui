@@ -68,7 +68,7 @@ const Requests = () => {
                 key={request._id}
                 className="flex pt-8 justify-center"
               >
-                <div className="card bg-base-300 w-8/12 shadow-sm min-h-48 flex flex-row items-center  p-4">
+                <div className="card bg-base-300 w-7/12 shadow-sm min-h-48 flex flex-row items-center  p-4">
                   <div className="flex items-center w-1/5">
                     <img
                       src={photoUrl}

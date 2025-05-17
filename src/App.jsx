@@ -7,6 +7,7 @@ import { Provider } from 'react-redux';
 import Feed from './components/Feed.jsx';
 import Connections from './components/Connections.jsx';
 import Requests from './components/Requests.jsx';
+import ChangePassword from './components/ChangePassword.jsx';
 
 function App() {
   return (
@@ -37,6 +38,10 @@ function App() {
               <Route
                 path="/requests"
                 element={<Requests />}
+              />
+              <Route
+                path="/changePassword"
+                element={<ChangePassword />}
               />
             </Route>
           </Routes>

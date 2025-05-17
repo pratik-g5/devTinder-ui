@@ -83,6 +83,14 @@ const Navbar = () => {
                 </Link>
               </li>
               <li>
+                <Link
+                  to="/changePassword"
+                  className="justify-between"
+                >
+                  Change Password
+                </Link>
+              </li>
+              <li>
                 <a onClick={() => handleLogout()}>Logout</a>
               </li>
             </ul>
