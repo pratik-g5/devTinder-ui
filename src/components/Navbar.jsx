@@ -24,7 +24,7 @@ const Navbar = () => {
       <div className="flex-1 flex items-center">
         <img
           alt="Icon"
-          src="../../public/devTinder.jpg"
+          src="/devTinder.jpg"
           className="ml-4 w-12 h-12 rounded-md"
         />
         <Link
