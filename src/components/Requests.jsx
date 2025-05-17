@@ -68,28 +68,28 @@ const Requests = () => {
                 key={request._id}
                 className="flex pt-8 justify-center"
               >
-                <div className="card bg-base-300 w-7/12 shadow-sm min-h-48 flex flex-row items-center  p-4">
-                  <div className="flex items-center w-1/5">
+                <div className="card bg-base-300 w-11/12 md:w-7/12 shadow-sm min-h-48 flex flex-col md:flex-row items-center p-4">
+                  <div className="flex items-center w-full md:w-1/5 mb-4 md:mb-0">
                     <img
                       src={photoUrl}
                       alt="Profile"
-                      className="w-24 h-24 rounded-full shadow-lg ml-2"
+                      className="w-24 h-24 rounded-full shadow-lg mx-auto md:ml-2"
                     />
                   </div>
-                  <div className="w-2/3">
+                  <div className="w-full md:w-2/3 text-center md:text-left">
                     <h1 className="text-xl font-bolds">
                       {firstName + ' ' + lastName}
                     </h1>
-                    <h2 className="text-md text-neutral-500 1/3">
-                      {age + ', ' + gender}{' '}
+                    <h2 className="text-md text-neutral-500">
+                      {age + ', ' + gender}
                     </h2>
                     <p className="text-sm text-neutral-300 pt-2 overflow-hidden overflow-ellipsis max-h-16 break-words">
                       {about}
                     </p>
                   </div>
-                  <div className="pr-5 flex">
+                  <div className="flex justify-center md:justify-end w-full md:w-auto mt-4 md:mt-0">
                     <button
-                      className="btn btn-primary mx-3"
+                      className="btn btn-primary mx-2"
                       onClick={() => {
                         reviewRequest('rejected', request._id);
                       }}
@@ -97,7 +97,7 @@ const Requests = () => {
                       Reject
                     </button>
                     <button
-                      className="btn btn-secondary"
+                      className="btn btn-secondary mx-2"
                       onClick={() => {
                         reviewRequest('accepted', request._id);
                       }}
