@@ -14,7 +14,7 @@ const Login = () => {
   const [lastName, setLastname] = useState('');
   const [password, setPassword] = useState('');
 
-  const [isLoginForm, setIsLoginForm] = useState(false);
+  const [isLoginForm, setIsLoginForm] = useState(true);
   const [error, setError] = useState(null);
   const [showError, setShowError] = useState(false);
 
