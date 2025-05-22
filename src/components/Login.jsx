@@ -17,6 +17,7 @@ const Login = () => {
   const [isLoginForm, setIsLoginForm] = useState(true);
   const [error, setError] = useState(null);
   const [showError, setShowError] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const userData = useSelector((state) => state.user);
 
@@ -27,6 +28,7 @@ const Login = () => {
   }, [userData]);
 
   const handleSignUp = async () => {
+    setIsLoading(true);
     try {
       const response = await axios.post(
         BASE_URL + '/signup',
@@ -44,11 +46,14 @@ const Login = () => {
       navigate('/profile');
     } catch (err) {
       setShowError(true);
-      setError(error?.response?.data || 'Sign up failed');
+      setError(err?.response?.data || 'Sign up failed');
+    } finally {
+      setIsLoading(false);
     }
   };
 
   const handleLogin = async () => {
+    setIsLoading(true);
     try {
       const response = await axios.post(
         BASE_URL + '/login',
@@ -64,6 +69,8 @@ const Login = () => {
     } catch (error) {
       setShowError(true);
       setError(error?.response?.data || 'Login failed');
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -91,6 +98,7 @@ const Login = () => {
               value={lastName}
               onChange={(e) => setLastname(e.target.value)}
               onClick={(e) => setShowError(false)}
+              onEnter
             />
           </>
         )}
@@ -129,12 +137,19 @@ const Login = () => {
           )}
         </p>
         <button
-          className="btn btn-neutral mt-4"
+          className="btn btn-neutral mt-4 flex justify-center items-center"
           onClick={() => {
             isLoginForm ? handleLogin() : handleSignUp();
           }}
+          disabled={isLoading}
         >
-          {isLoginForm ? 'Login' : 'Sign Up'}
+          {isLoading ? (
+            <div className="loader-circle animate-spin border-2 border-t-transparent border-neutral-content rounded-full w-5 h-5"></div>
+          ) : isLoginForm ? (
+            'Login'
+          ) : (
+            'Sign Up'
+          )}
         </button>
       </fieldset>
     </div>
