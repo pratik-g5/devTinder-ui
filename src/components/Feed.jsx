@@ -9,6 +9,7 @@ import { useNavigate } from 'react-router-dom';
 const Feed = () => {
   const dispatch = useDispatch();
   const feed = useSelector((store) => store.feed);
+  const user = useSelector((store) => store.user);
   const navigate = useNavigate();
   const fetchUsers = async () => {
     try {
@@ -20,6 +21,9 @@ const Feed = () => {
   };
 
   useEffect(() => {
+    if(user === null) {
+      navigate('/login');
+     }
     fetchUsers();
   }, []);
 
